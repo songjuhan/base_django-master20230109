@@ -1,0 +1,246 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    color: #2f3640;
+    background: #F7F7F7;
+    font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.471;
+    margin: 0;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    overflow-x: hidden;
+}
+
+#sidebar {
+    width: 250px;
+    min-height: 100%;
+    background: #2c3e50;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+
+#sidebar,
+.content,
+.navbar-fixed-top {
+    transition: all 0.3s;
+}
+
+#content {
+    width: 100%;
+    transition: all 0.3s;
+    padding-top: 60px;
+}
+
+#sidebar+.content,
+#sidebar+.content .navbar-fixed-top {
+    margin-left: 250px;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar.active+.content,
+#sidebar.active+.content .navbar-fixed-top {
+    margin-left: 0;
+}
+
+#sidebar .sidebar-header {
+    position: relative;
+    display: block;
+}
+
+#sidebar .sidebar-header a {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-weight: 400;
+    font-size: 22px;
+    width: 100%;
+    line-height: 54px;
+    display: block;
+    height: 50px;
+    margin: 0;
+    padding: 4px 0 0 10px;
+    color: #F7F7F7;
+}
+
+#sidebar .sidebar-header a:hover {
+    text-decoration: none;
+}
+
+#sidebar .sidebar-header img {
+    width: 42px;
+    height: 42px;
+    float: left;
+}
+
+#sidebar .sidebar-header span {
+    line-height: 42px;
+    height: 42px;
+    color: #FFFFFF
+}
+
+.sidebar-left .menu-left {
+    padding: 20px 0;
+
+}
+
+.menu-left p.title {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    color: #ecf0f1;
+    margin: 10px 0 0;
+}
+
+.menu-left li {
+    position: relative;
+}
+
+
+.menu-left li a {
+    padding: 13px 15px 12px;
+    font-size: 1.2em;
+    display: block;
+    color: #ecf0f1;
+}
+
+.menu i {
+    display: inline-block;
+    position: relative;
+    margin-right: 14px;
+    text-align: right;
+}
+
+.submenu i {
+    display: inline-block;
+    position: relative;
+    margin-right: 14px;
+    text-align: right;
+}
+
+
+.menu-left li a:hover {
+    color: #7386D5;
+    background: #34495e;
+    text-decoration: none;
+}
+
+.menu-left li.active a {
+    color: #fff;
+    background: #34495e;
+}
+
+.menu-left ul.sub_menu li:before {
+    background: #425668;
+    bottom: auto;
+    content: "";
+    height: 8px;
+    left: 15px;
+    margin-top: 18px;
+    position: absolute;
+    right: auto;
+    width: 8px;
+    z-index: 1;
+    border-radius: 50%;
+}
+
+.menu-left ul.sub_menu li:after {
+    border-left: 1px solid #425668;
+    bottom: 0;
+    content: "";
+    left: 18px;
+    position: absolute;
+    top: 0;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul.menu-left ul a {
+    font-size: 1.1em !important;
+    padding-left: 30px !important;
+}
+
+
+.bg-nav {
+    background-color: #ecf0f1;
+}
+
+footer {
+    padding: 10px 15px;
+    display: block;
+    background-color: whitesmoke;
+}
+
+@media (max-width: 991.98px) {
+    #sidebar {
+        margin-left: -250px;
+        top: 55px
+    }
+
+    #sidebar.active {
+        margin-left: 0;
+    }
+
+
+    #sidebar+.content,
+    #sidebar+.content .navbar-fixed-top {
+        margin-left: 0;
+    }
+}
+
+
+.navbar-brand {
+    background-color: #f8f8f8;
+}
+
+.navbar-brand:hover {
+    background-color: #dddddd !important;
+}
+
+
+.content-main {
+    background-color: white;
+}
+
+.navbar-default {
+    min-height: 60px;
+}
+
+.section {
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px 10px 0 10px;
+}
+
+.form-control:focus {
+    border-color: darkgray;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(80, 80, 80, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(80, 80, 80, .6);
+}
+
+*:focus {
+    outline: 0 !important;
+}

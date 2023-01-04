@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <title>유연생산공정분석플랫폼</title>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{% static "/libs/bootstrap/bootstrap.css" %}"/>
+        <link rel="stylesheet" href="{% static "/libs/font-awesome/font-awesome.min.css" %}"/>
+        <link rel="stylesheet" href="{% static "/builds/custom.css" %}"/>
+
+        <!--Bootstrap datatable-->
+        <link rel="stylesheet" href="{% static "/libs/datatables.net/js/jquery.dataTables.min.css" %}"/>
+        <!---->
+        <!--Bootstrap Daterangepicker-->
+        <link rel="stylesheet" href="{% static "/libs/bootstrap-daterangepicker/daterangepicker.css" %}"/>
+        <!---->
+    {% endblock %}
+
+</head>
+
+<body>
+<div class="wrapper">
+    {% block sidebar %}
+        {% include "base_layout/sidebar.html" %}
+    {% endblock %}
+    <div class="content" id="content">
+        {% block top_navigation %}
+            {% include "base_layout/top_navigation.html" %}
+        {% endblock %}
+
+        <div class="content-main">
+            <div class="container-fluid" style="padding-bottom: 15px;">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+        {% block footer %}
+            {% include "base_layout/footer.html" %}
+        {% endblock footer %}
+    </div>
+</div>
+{% block javascripts %}
+    <script src="{% static "/libs/jquery/jquery.js" %}"></script>
+    <script src="{% static "/libs/bootstrap/bootstrap.js" %}"></script>
+    <script src="{% static "/builds/custom.js" %}"></script>
+    <!-- Bootstrap Colorpicker -->
+    <script src="{% static "/libs/moment/min/moment.min.js" %}"></script>
+    <script src="{% static "/libs/bootstrap-daterangepicker/daterangepicker.js" %}"></script>
+    <script src="{% static '/libs/datetimepicker/bootstrap-datetimepicker.js' %}"></script>
+
+{% endblock %}
+</body>
+</html>

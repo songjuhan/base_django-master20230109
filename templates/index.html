@@ -1,0 +1,29 @@
+{% extends "base_layout/base_site.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <h1>Sensor</h1>
+    <table class="table table-bordered">
+        <tr>
+
+            {% for datase in col %}
+
+            <th><B>{{datase}}</B></th>
+
+            {% endfor %}
+        </tr>
+        {% for oneline in context.datas %}
+        <tr>
+            {% for onedata in oneline %}
+            <td>{{onedata}}</td>
+
+            <!--                {% for datase in datas %}-->
+            <!--                <td>{{datase}}번</td>-->
+            <!--                {% endfor %}-->
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

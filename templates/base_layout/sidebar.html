@@ -1,0 +1,62 @@
+{% load static %}
+<div id="sidebar">
+    <div class="sidebar-header border-bottom border-success" style="min-height: 60px; display: flex;">
+        <a href="{% url 'index' %}" style="margin: auto;">
+            <div style="display: flex;">
+                <div>
+                    <img class="media-object" src="{% static "/images/CBNU_logo_white.png" %}"
+                         width="40px" height="40px" alt="logo"/>
+                </div>
+                <div style="display: flex; margin-left: 10px;">
+                    <h4 class="media-heading" style="margin: auto;">
+                        Title line1<br/>Title line1
+                    </h4>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="clearfix"></div>
+    <p class="section">Section title</p>
+    <ul class="list-unstyled menu-left" style="margin: 0;">
+        <li>
+            <a href="#pageSubMenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle menu">
+                <i class="fa fa-database" aria-hidden="true"></i>Menu1<span class="fa fa-chevron-down pull-right"></span></a>
+            <ul class="collapse list-unstyled sub_menu" id="pageSubMenu1">
+                <li>
+                    <a class="submenu" href="{% url 'index' %}">Submenu1</a>
+                </li>
+                <li><a class="submenu" href="{% url 'index' %}">Submenu2</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#pageSubMenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle menu">
+                <i class="fa fa-database" aria-hidden="true"></i>Menu2<span
+                    class="fa fa-chevron-down pull-right"></span></a>
+            <ul class="collapse list-unstyled sub_menu" id="pageSubMenu2">
+                <li>
+                    <a class="submenu" href="#">submenu2</a>
+                </li>
+                {#                <li>#}
+                {#                    <a class="submenu" href="{% url "old_keyin_syst" %}">OLD 데이터입력</a>#}
+                {#                </li>#}
+                <li class="active">
+                    <a class="submenu" href="#">submenu3</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#pageSubMenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle menu">
+                <i class="fa fa-database" aria-hidden="true"></i>Menu3<span
+                    class="fa fa-chevron-down pull-right"></span></a>
+            <ul class="collapse list-unstyled sub_menu" id="pageSubMenu3">
+
+                <li>
+                    <a class="submenu" href="#">submenu3</a>
+                </li>
+                <li>
+                    <a class="submenu" href="#">Submenu4</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
