@@ -7,7 +7,7 @@
     <table class="table table-bordered">
         <tr>
 
-            {% for datase in col %}
+            {% for datase in context.fields_name %}
 
             <th><B>{{datase}}</B></th>
 
@@ -18,9 +18,9 @@
             {% for onedata in oneline %}
             <td>{{onedata}}</td>
 
-            <!--                {% for datase in datas %}-->
-            <!--                <td>{{datase}}번</td>-->
-            <!--                {% endfor %}-->
+{#            <!--                {% for datase in datas %}-->#}
+{#            <!--                <td>{{datase}}번</td>-->#}
+{#            <!--                {% endfor %}-->#}
             {% endfor %}
         </tr>
         {% endfor %}
