@@ -9,10 +9,10 @@ from django.contrib import messages
 # Create your views here.
 # Functions or Class Based Views for rendering html templates
 
-
-
-
-
+attributeid = None
+my_file =None
+missing_values =None
+my_dashboard = None
 def index(request):
     datas = GatheringFake.objects.values()
     nameList = []
@@ -30,6 +30,7 @@ def index(request):
     for j in range(len(datas)):
         valueList.append(list(datas[j].values()))
     context = {'datas' : valueList, 'fields_name' : nameList}
+    print("")
     return render(request, template_name='index.html', context={'context':context})
 
 
@@ -39,7 +40,7 @@ def mon(request):
 
     global attributeid, col, product_list
     context={}
-
+    valuecount=[]
     if request.method == "POST":
         uploaded_file = request.FILES['document']
         attributeid = request.POST.get('attributeid')
@@ -64,51 +65,36 @@ def mon(request):
 
             data = pd.DataFrame(data=my_file, index=None)
 
+            # rows and columns
+            rows = len(data.axes[0])
+            columns = len(data.axes[1])
+            print(rows)
+            print(columns)
+
+
             # pandas 데이터 프레임을 리스트로
             col = my_file.columns.tolist()
             products_list = my_file.values.tolist()
-            print(f'testtesttesttesttesttesttesttest{type(col)}')
             context2 = {'columns': col, "value": products_list}
 
             print("key:", col)
-            # print("value :", products_list)
 
-            # rows and columns
-            rows = len(data.axes[0])
-            columns = len(data.axes[1])
-            print(rows)
-            print(columns)
-
-            # find missing data
-            missingsings = ['?', '0', '--']
-            null_data = data[data.isnull().any(axis=1)]  # find the missing data
-
-            my_file = pd.read_csv(file_directory, sep=',', engine='python')
-
-            data = pd.DataFrame(data=my_file, index=None)
-
-            # pandas 데이터 프레임을 리스트로
-            col = my_file.columns.tolist()
-            products_list = my_file.values.tolist()
-
-            print("key:", col)
-            # print("value :", products_list)
-
-            # rows and columns
-            rows = len(data.axes[0])
-            columns = len(data.axes[1])
-            print(rows)
-            print(columns)
+            # describ 데이터 프레임
+            describe_col= my_file.describe().columns.tolist()
+            describe_list= my_file.describe().values.tolist()
 
             # find missing data
             missingsings = ['?', '0', '--']
             null_data = data[data.isnull().any(axis=1)]  # find the missing data
 
             missing_values = len(null_data)
-
+            print(missing_values)
 
             # csv 데이터 보내기
-            context = {'messages':messages, 'cols':col, 'products_list':products_list}
+            message = 'Null' + ' ' + 'data :' + str(missing_values)
+            context = {'messages':message, 'cols':col, 'products_list':products_list, 'describe_cols': describe_col , 'describe_list':describe_list}
+
+            print(message)
             return render(request, 'results.html', context)
         else :
             messages.warning(request,' File was not uploaded. Please use csv file extension !')
@@ -130,7 +116,7 @@ def readfile(filename):
     col = my_file.columns.tolist()
     products_list = my_file.values.tolist()
 
-    #print("value :", products_list)
+
 
 
     #rows and columns
@@ -152,12 +138,13 @@ def readfile(filename):
 
 
 
+
 def results(request):
 
-    message = 'I found' + str(rows) + 'rows and' + str(columns) +'columns. Missing data are: ' + str(missing_values)
+
+    message = 'Null' + ' ' + 'data :' + str(missing_values)
 
     messages.warning(request, message)
-
     #split into keys and values based on the attribute input
     dashboard = []
 
@@ -170,6 +157,8 @@ def results(request):
     keys = my_dashboard.keys()
     values =my_dashboard.values()
 
+
+
     listkeys= []
     listvalues =[]
 
@@ -180,8 +169,52 @@ def results(request):
         listvalues.append(y)
 
     context = {
-        'listkeys' : listkeys,
-        'listvalues' : listvalues
+        'listkeys' : keys,
+        'listvalues' : values
     }
-    #print(listkeys)
-    return render(request, 'results.html')
+
+
+
+    print(type(listkeys))
+    print(type(keys))
+    print(listkeys)
+    # itemlist = context.items()
+    # for item in itemlist :
+    #     print(item)
+    return render(request, 'results.html',context)
+
+def describe(request):
+    # describ 데이터 프레임
+
+    describe_col = my_file.describe().columns.tolist()
+    describe_list = my_file.describe().values.tolist()
+    describe_col.insert(0, '')
+    for i in range(len(describe_list)):
+        describe_list[i].insert(0, my_file.describe().index[i])
+    describe_list
+
+    # 상관관계
+
+    corr_matrix = my_file.corr(numeric_only=True)
+    #print(corr_matrix)
+    corr_matrix.index.name = "columns"
+    #print(corr_matrix)
+    corr_col = corr_matrix.columns.tolist()
+    corr_list = corr_matrix.values.tolist()
+    corr_col.insert(0, '')
+    for i in range(len(corr_list)):
+        corr_list[i].insert(0, corr_matrix.index[i])
+    corr_list
+
+
+    context = {'describe_cols': describe_col, 'describe_list': describe_list, "corr_cols": corr_col,
+               "corr_list": corr_list}
+
+    return render(request, "describe.html",context)
+
+def data_delete(request):
+
+
+
+
+    return render(request, "data.html")
