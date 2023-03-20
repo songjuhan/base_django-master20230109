@@ -1,0 +1,39 @@
+{% extends 'base_layout/base_site.html' %}
+{% block content %}
+
+
+<div class="container">
+  <h2>파일 정보</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+        <tr>
+
+          {% for datase in cols %}
+
+            <th><B>{{datase}}</B></th>
+
+            {% endfor %}
+
+        </tr>
+      </thead>
+      <tbody>
+
+             {% for oneline in products_list %}
+        <tr>
+
+            {% for onedata in oneline %}
+            <td>{{onedata}}</td>
+
+            {% endfor %}
+        </tr>
+        {% endfor %}
+
+
+      </tbody>
+
+    </table>
+  </div>
+
+
+</div>
+{% endblock %}

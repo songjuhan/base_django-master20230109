@@ -7,6 +7,7 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
+
 class File(models.Model):
     file = models.FileField(upload_to='files')
 
@@ -136,5 +137,4 @@ class GatheringFake(models.Model):
     class Meta:
         managed = False
         db_table = 'gathering_fake'
-
 

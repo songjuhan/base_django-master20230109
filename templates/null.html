@@ -1,0 +1,45 @@
+{% extends 'base_layout/base_site.html' %}
+{% block content %}
+
+
+<div class="container">
+  <h2>컬럼별 null 개수</h2>
+
+    {% block information %}
+        {% if information %}
+            {% for message in information %}
+                {{ message }}
+            {%  endfor %}
+        {% endif %}
+
+    {% endblock %}
+
+    <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+
+        {% for datase in col %}
+            <th><B>{{datase}}</B></th>
+        {% endfor %}
+        </tr>
+      </thead>
+     <tbody>
+        <tr>
+            {% for onedata in b %}
+            <td>{{onedata}}</td>
+
+            {% endfor %}
+        </tr>
+
+
+
+
+      </tbody>
+        <li><a class="submenu" href="{% url 'delete' %}">데이터 정제</a></li>
+    </table>
+  </div>
+
+</div>
+
+{% endblock %}

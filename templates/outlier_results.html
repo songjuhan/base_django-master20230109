@@ -1,0 +1,13 @@
+{% extends 'base_layout/base_site.html' %}
+{% block content %}
+    <h5>삭제할 Columns을 선택해주세요</h5>
+    <form action="" method="post">
+              {% csrf_token %}
+        {% for check in col %}
+                    <p><input id="selected8" type="checkbox" name="selected8" value="{{ check }}">{{ check }}</p>
+                {%  endfor %}
+        <button type="submit">실행
+        </button>
+    </form>
+        li><a class="submenu" href="{% url 'describe' %}">결과확인</a></li>
+{% endblock %}

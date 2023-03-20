@@ -1,0 +1,21 @@
+{% extends 'base_layout/base_site.html' %}
+{% block content %}
+    <div style="border: 1px solid gold; float: left; width: 33%;">
+    <h5>Columns 1개를 선택해주세요</h5>
+    <form action="" method="post">
+              {% csrf_token %}
+        {% for check in col %}
+                    <p><input id="selected2" type="checkbox" name="selected2" value="{{ check }}">{{ check }}</p>
+                {%  endfor %}
+    </form>
+        <button type="submit">시각화</button>
+    </form>
+    </div>
+    <div style="border: 1px solid gold; float: left; width: 66%;">
+    <div class="container mt-4">
+        {{ chart|safe }}
+    </div>
+    </div>
+{% endblock %}
+
+

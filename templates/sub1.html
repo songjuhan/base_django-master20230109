@@ -1,0 +1,11 @@
+{% extends "base_layout/base_site.html" %}
+
+{% block content %}
+{% load static %}
+<a>비교 시각화</br></a>
+                    <img class="media-object" src="{% static "images/bar.png" %}" width="1000px" height="1000px"/>
+<a href="{% url 'bar' %}"><br>막대 그래프</a>
+<a href="#">히트맵</a>
+<a href="#">평행 좌표계</a>
+<a href="{% url 'plot3' %}">box plot</a>
+{% endblock %}

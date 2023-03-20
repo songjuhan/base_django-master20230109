@@ -1,0 +1,25 @@
+{{% extends 'base_layout/base_site.html' %}
+{% block content %}
+    <h5>정규화 할 컬럼을 선택해주세요</h5>
+    <form action="" method="post">
+              {% csrf_token %}
+
+            <div style="width:200px; height:150px;float:left;">
+                  <h5><strong>MinMaxScaler 정규화</strong></h5>
+                {% for check in col %}
+                    <p><input id="selected6" type="checkbox" name="selected6" value="{{ check }}@#$%a">{{ check }}</p>
+                {%  endfor %}
+                  <button type="submit">컬럼 정규화</button>
+              </div>
+
+            <div style="width:200px; height:150px;float:left;">
+                  <h5><strong>StandardScaler 정규화</strong></h5>
+                {% for check in col %}
+                   <p><input id="selected6" type="checkbox" name="selected6" value="{{ check }}@#$%w">{{ check }}</p>
+                {%  endfor %}
+                  <button type="submit">컬럼 정규화</button>
+              </div>
+
+    </form>
+
+{% endblock %}

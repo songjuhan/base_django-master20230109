@@ -1,0 +1,22 @@
+{% extends 'base_layout/base_site.html' %}
+{% block content %}
+
+
+<div class="container">
+  <h2>파일 정보</h2>
+  <div class="table-responsive">
+
+          {% for row in row %}
+
+            <th><B>{{row}}</B></th>
+
+            {% endfor %}
+
+
+
+
+  </div>
+
+
+</div>
+{% endblock %}

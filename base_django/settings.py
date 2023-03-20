@@ -25,7 +25,7 @@ SECRET_KEY = '8n79bks!91by#3j3t+ct!l#&zp0!(w2^ig^=x482(cc1q^u_tf'
 DEBUG = True
 
 # add your server IP address e.g. : ALLOWED_HOSTS = ['127.0.0.1']
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',  # for support api
     'base_app',  # your base app
+
 ]
 
 MIDDLEWARE = [
@@ -91,9 +92,9 @@ FILE_UPLOAD_HANDLERS = ['django.core.files.uploadhandler.TemporaryFileUploadHand
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'domino',
+        'NAME': 'mysql',
         'USER': 'root',
-        'PASSWORD': 'money',
+        'PASSWORD': '0528',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -144,3 +145,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL ='/media/'
+
+X_FRAME_OPTIONS = 'ALLOWALL'
+
+XS_SHARING_ALLOWED_METHODS = ['POST','GET','OPTIONS', 'PUT', 'DELETE']

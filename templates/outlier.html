@@ -1,0 +1,22 @@
+{% extends 'base_layout/base_site.html' %}
+{% block content %}
+    <h5>Columns 1개를 선택해주세요</h5>
+    <form action="" method="post">
+              {% csrf_token %}
+        {% for check in col %}
+                    <p><input id="selected7" type="checkbox" name="selected7" value="{{ check }}">{{ check }}</p>
+                {%  endfor %}
+        <button type="submit">이상치 확인</button>
+            <td>이상치 총합 : {{ sum2 }}</td>
+
+
+    </form>
+    <div class="container mt-4">
+        {{ chart|safe }}
+        {%  if chart %}
+{#        <button type="submit">이상치 행 삭제</button>#}
+            <a href="{% url 'outlier_results' %}"
+                   class="btn btn-sm btn-outline-secondary">이상치 행 삭제</a>
+        {% endif %}
+    </div>
+{% endblock %}

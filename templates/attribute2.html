@@ -1,0 +1,41 @@
+{% load static %}
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'builds/table.css' %}">
+</head>
+<body>
+<div class ="container" >
+<table>
+  <thead>
+    <tr>
+        <th>
+            columns
+        </th>
+        {% for datase in cols %}
+            <th><B>{{datase}}</B></th>
+            {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>
+        null number
+    </td>
+{% for onedata in b %}
+            <td>{{onedata}}</td>
+
+            {% endfor %}
+    </tr>
+
+    <tr>
+      <td>
+      data type
+  </td>
+  {% for onedata in type1 %}
+  <td>{{onedata}}</td>
+
+  {% endfor %}
+  </tr>
+  </tbody>
+</table>
+</div>
+</body>
